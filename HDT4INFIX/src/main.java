@@ -36,7 +36,7 @@ public class main {
 		Scanner scan = new Scanner(System.in);
 		int UserSelection = 0;
 		try {
-			System.out.println("¿Con cuál tipo de estructura desea hacer la operacion? \n"
+			System.out.println("¿Con cual tipo de estructura desea hacer la operacion? \n"
 					+ "1.Arreglo/Vector\n"
 					+ "2.ArrayList\n"
 					+ "3.Lista Simple Encadenada\n"

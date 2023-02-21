@@ -1,6 +1,10 @@
 
 public abstract class ListStack<T> implements IStack<T>{
-
+	
+	public ListStack() {
+		
+	}
+	
 	@Override
 	public T pop() {
 		// TODO Auto-generated method stub
