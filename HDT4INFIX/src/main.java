@@ -30,8 +30,9 @@ public class main {
 			if (StackType == 5) {
 				System.exit(0);
 			}
+			
 			StackFactory Factory = new StackFactory();
-			IStack CurrentStack = Factory.createStack(StackType);
+			IStack CurrentStack = Factory.createStack(StackType, strSplit);
 			
 			System.out.println("...................................");
 			for (int i = 0; i < PostFix.length(); i++) {
@@ -80,7 +81,6 @@ public class main {
 				    	System.out.println(strSplit[i] + ", Caracter no valido\n");
 				    }
 				}
-				
 				
 				
 			}

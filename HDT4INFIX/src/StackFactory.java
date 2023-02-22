@@ -1,11 +1,11 @@
 
 public class StackFactory<T> {
 	
-	public IStack createStack(int StackType) {
+	public IStack createStack(int StackType, String[] postfix) {
 		
 		switch (StackType) {
 		case 1:
-			ArrayStack<T> ArrayStack = new ArrayStack<T>();
+			ArrayStack<T> ArrayStack = new ArrayStack<T>(postfix);
 			return ArrayStack;
 			
 		case 2:
