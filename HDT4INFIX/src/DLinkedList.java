@@ -1,6 +1,7 @@
 
 public class DLinkedList<T> implements IStack{
 
+	private Calculator Calc;
 	private DoubleNode<T> First;
 	private DoubleNode<T> Last;
 	
@@ -32,6 +33,11 @@ public class DLinkedList<T> implements IStack{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	@Override
+	public Calculator getCalc() {
+		return Calc;
+	}	
 
 	public DoubleNode<T> getFirst() {
 		return First;

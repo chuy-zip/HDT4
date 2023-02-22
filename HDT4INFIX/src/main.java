@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class main {
@@ -12,26 +13,80 @@ public class main {
 			 * Reading the file to get the infix expression from the txt file
 			 */
 			String InfixExpression = getDataFromTxt();
-			System.out.println(InfixExpression);
+			System.out.println("Expresion Infix: " + InfixExpression);
+			
+			 /**
+			  * Converting the infix expression to postfix
+			  */
+			String PostFix = ConvertInfixToPostFix(InfixExpression);
+			System.out.println("Expresion Postfix: " + PostFix);
+			String[] strSplit = PostFix.split("");
 			
 			/**
 			 * Getting user input for type of stack and crating it with stack factory
 			 */
 			int StackType = getUserOption();
+			//End the program if selected option is 5
+			if (StackType == 5) {
+				System.exit(0);
+			}
 			StackFactory Factory = new StackFactory();
 			IStack CurrentStack = Factory.createStack(StackType);
 			
-			System.out.println(CurrentStack);
-			 /**
-			  * Converting the infix expression to postfix
-			  */
-			String PostFix = ConvertInfixToPostFix(InfixExpression);
-			System.out.println(PostFix);
+			System.out.println("...................................");
+			for (int i = 0; i < PostFix.length(); i++) {
+				System.out.println("Entrada: " + strSplit[i]);
+				
+				float SeconOperand, FirstOperand, result;
+				
+				switch (strSplit[i]) {
+				
+				case "+":
+					System.out.println("Operacion: Sumar, pop, pop y push del resultado");
+					SeconOperand = (float) CurrentStack.pop();
+					FirstOperand = (float) CurrentStack.pop();
+					result = CurrentStack.getCalc().getInstance().Add(FirstOperand, SeconOperand);
+					CurrentStack.push(result);
+					break;
+					
+				case "*":
+					System.out.println("Operacion: Multiplicar, pop, pop y push del resultado");
+					SeconOperand = (float) CurrentStack.pop();
+					FirstOperand = (float) CurrentStack.pop();
+					result = CurrentStack.getCalc().getInstance().Multiply(FirstOperand, SeconOperand);
+					CurrentStack.push(result);
+					break;
+				/**
+				 * Case for division operand
+				 */
+				case "/":
+					System.out.println("Operacion: Dividir, pop, pop y push del resultado");
+					SeconOperand = (float) CurrentStack.pop();
+					FirstOperand = (float) CurrentStack.pop();
+					result = CurrentStack.getCalc().getInstance().Divide(FirstOperand, SeconOperand);
+					CurrentStack.push(result);
+					break;
+				
+				/**
+				 * Case for founding an operand or invalid argument
+				 */
+				default:
+					try {
+				        float pushedValue = Float.parseFloat(strSplit[i]);
+				        System.out.println("Push al operando: " + strSplit[i]);
+				        CurrentStack.push(pushedValue);
+						
+				    } catch(NumberFormatException e) {
+				    	System.out.println(strSplit[i] + ", Caracter no valido\n");
+				    }
+				}
+				
+				
+				
+			}
 			
-			
-		}
-		
-			
+			System.out.println("...................................");
+		}	
 	}
 	
 	/**
@@ -68,7 +123,8 @@ public class main {
 					+ "1.Arreglo/Vector\n"
 					+ "2.ArrayList\n"
 					+ "3.Lista Simple Encadenada\n"
-					+ "4.Lista Doblemente Encadenada");
+					+ "4.Lista Doblemente Encadenada\n"
+					+ "5.Salir");
 			UserSelection = scan.nextInt();
 			return UserSelection;
 			

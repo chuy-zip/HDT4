@@ -48,7 +48,8 @@ public class ArrayListStack <T> implements IStack<T>{
 	public int Size() {
 		return Stack.size();
 	}
-
+	
+	@Override
 	public Calculator getCalc() {
 		return Calc;
 	}	

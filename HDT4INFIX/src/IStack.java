@@ -23,4 +23,10 @@ public interface IStack <T>{
 	 * @return How many elements are in the stack
 	 */
 	public int Size();
+
+	/**
+	 * Method that gets the calculator of the stack
+	 * @return Calculator
+	 */
+	public Calculator getCalc();
 }

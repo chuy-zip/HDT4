@@ -1,6 +1,7 @@
 
 public abstract class ListStack<T> implements IStack<T>{
 	
+	private Calculator Calc;
 	public ListStack() {
 		
 	}
@@ -28,5 +29,10 @@ public abstract class ListStack<T> implements IStack<T>{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	@Override
+	public Calculator getCalc() {
+		return Calc;
+	}	
 
 }

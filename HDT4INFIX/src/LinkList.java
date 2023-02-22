@@ -1,6 +1,7 @@
 
 public class LinkList<T> implements IStack{
 	
+	private Calculator Calc;
 	private SimpleNode<T> First;
 	private SimpleNode<T> Last;
 	
@@ -33,6 +34,11 @@ public class LinkList<T> implements IStack{
 		return 0;
 	}
 
+	@Override
+	public Calculator getCalc() {
+		return Calc;
+	}	
+	
 	public SimpleNode<T> getFirst() {
 		return First;
 	}
