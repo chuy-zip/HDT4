@@ -1,5 +1,6 @@
+import java.util.Iterator;
 
-public class LinkList<T> implements IStack{
+public class LinkList<T> implements IStack<T>{
 	
 	private Calculator Calc;
 	private SimpleNode<T> First;
@@ -11,21 +12,71 @@ public class LinkList<T> implements IStack{
 	}
 
 	@Override
-	public Object pop() {
-		// TODO Auto-generated method stub
-		return null;
+	public T pop() {
+		if(First == null) {
+			return null;
+		}
+		
+		if(First.getNextNode() == null) {
+			T popData = getFirst().getData();
+			First = null;
+			return popData;
+		}
+		
+		SimpleNode<T> SecondLast = First;
+		
+		while (SecondLast.getNextNode().getNextNode() != null) {
+			SecondLast = SecondLast.getNextNode();
+		}
+		
+		
+		T popData = SecondLast.getNextNode().getData();
+		Last = SecondLast;
+		
+		SecondLast.setNextNode(null);
+
+		return popData;
 	}
 
 	@Override
-	public void push(Object item) {
-		// TODO Auto-generated method stub
+	public void push(T item) {
+		SimpleNode<T> newNode = new SimpleNode<T>(item);
+		
+		if (First == null) {
+			First = newNode;
+			Last = newNode;
+		}
+		
+		else {
+			Last.setNextNode(newNode);
+			Last = newNode;
+		}
+		
+		SimpleNode<T> currentNode = First;
+		String currentStack = "";
+		while (currentNode != null) {
+			currentStack += currentNode.getData() + ", ";
+			currentNode = currentNode.getNextNode();
+		}
+		
+		System.out.println("Estado actual: " + currentStack + "\n");
 		
 	}
 
 	@Override
-	public Object Peek() {
-		// TODO Auto-generated method stub
-		return null;
+	public T Peek() {
+		/**
+		 * Going through every created node until next node is equal to null
+		 */
+		SimpleNode<T> currentNode = First;
+		while (currentNode != null) {
+			if(currentNode.getNextNode() == null) {
+				return currentNode.getData();
+			}
+			
+		}
+		
+		return currentNode.getData();
 	}
 
 	@Override

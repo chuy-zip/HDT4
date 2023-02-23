@@ -13,13 +13,13 @@ public class main {
 			 * Reading the file to get the infix expression from the txt file
 			 */
 			String InfixExpression = getDataFromTxt();
-			System.out.println("Expresion Infix: " + InfixExpression);
+			System.out.println("\nExpresion Infix: " + InfixExpression);
 			
 			 /**
 			  * Converting the infix expression to postfix
 			  */
 			String PostFix = ConvertInfixToPostFix(InfixExpression);
-			System.out.println("Expresion Postfix: " + PostFix);
+			System.out.println("Expresion Postfix: " + PostFix +"\n");
 			String[] strSplit = PostFix.split("");
 			
 			/**
@@ -47,6 +47,14 @@ public class main {
 					SeconOperand = (float) CurrentStack.pop();
 					FirstOperand = (float) CurrentStack.pop();
 					result = CurrentStack.getCalc().getInstance().Add(FirstOperand, SeconOperand);
+					CurrentStack.push(result);
+					break;
+				
+				case "-":
+					System.out.println("Operacion: Restar, pop, pop y push del resultado");
+					SeconOperand = (float) CurrentStack.pop();
+					FirstOperand = (float) CurrentStack.pop();
+					result = CurrentStack.getCalc().getInstance().Substract(FirstOperand, SeconOperand);
 					CurrentStack.push(result);
 					break;
 					
@@ -139,7 +147,7 @@ public class main {
 	/**
 	 * Convert a string from infix format to postfix
 	 * @param exp Expression in infix
-	 * @return COnvert string to Postfix
+	 * @return Converted string to Postfix
 	 */
 	public static String ConvertInfixToPostFix(String exp)
     {
@@ -198,8 +206,8 @@ public class main {
 	
 	/**
 	 * Method to determine the order of operations according to arithmetic order
-	 * @param ch
-	 * @return
+	 * @param Symbol that represents 
+	 * @return a value that represents the order of operation
 	 */
 	static int Prec(char ch)
     {
