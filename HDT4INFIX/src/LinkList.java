@@ -83,14 +83,12 @@ public class LinkList<T> implements IStack<T>{
 		 * Going through every created node until next node is equal to null
 		 */
 		SimpleNode<T> currentNode = First;
-		while (currentNode != null) {
+		while (true) {
 			if(currentNode.getNextNode() == null) {
 				return currentNode.getData();
 			}
 			
 		}
-		
-		return currentNode.getData();
 	}
 
 	@Override
