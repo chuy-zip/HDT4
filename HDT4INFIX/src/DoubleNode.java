@@ -1,10 +1,19 @@
-
+/**
+ * Node that is used by doubly linked lists
+ * @author Ricardo Chuy
+ *
+ * @param <T>
+ */
 public class DoubleNode<T> {
 	
 	private T Data;
 	private DoubleNode<T> NextNode;
 	private DoubleNode<T> PreviousNode;
 	
+	/**
+	 * The constructor of the node
+	 * @param digit The object that wants to be stored in the structure
+	 */
 	public DoubleNode(T data) {
 		setData(data);
 		setNextNode(null);

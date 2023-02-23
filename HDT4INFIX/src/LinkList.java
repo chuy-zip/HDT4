@@ -1,11 +1,20 @@
-import java.util.Iterator;
 
+import java.util.Iterator;
+/**
+ * A stack that internally works with Linked List
+ * @author Ricardo Chuy
+ *
+ * @param <T>
+ */
 public class LinkList<T> implements IStack<T>{
 	
 	private Calculator Calc;
 	private SimpleNode<T> First;
 	private SimpleNode<T> Last;
 	
+	/**
+	 * Constructor of the linked list
+	 */
 	public LinkList() {
 		setFirst(null);
 		setLast(null);
@@ -23,13 +32,18 @@ public class LinkList<T> implements IStack<T>{
 			return popData;
 		}
 		
+		/**
+		 * Going through a linked list until the second last element is found
+		 */
 		SimpleNode<T> SecondLast = First;
-		
 		while (SecondLast.getNextNode().getNextNode() != null) {
 			SecondLast = SecondLast.getNextNode();
 		}
 		
-		
+		/**
+		 * Storing the nexto value after second last (final value),
+		 * Then Change second last to being last element in the list
+		 */
 		T popData = SecondLast.getNextNode().getData();
 		Last = SecondLast;
 		
@@ -89,7 +103,7 @@ public class LinkList<T> implements IStack<T>{
 			currentNode = currentNode.getNextNode();
 		}
 		
-		return 0;
+		return counter;
 	}
 
 	@Override

@@ -1,12 +1,13 @@
 import java.lang.reflect.Array;
 
+
 public class ArrayStack<T> implements IStack<T>{
 	private Calculator Calc;
 	private T[] Stack;
 	
 	/**
 	 * A stack that only uses the array structure to manage the stack
-	 * @param postfix
+	 * @param postfix expresion to get a length that won't cause any issues
 	 */
 	public ArrayStack(String[] postfix) {
 		Stack = (T[]) new Object[postfix.length + 1];

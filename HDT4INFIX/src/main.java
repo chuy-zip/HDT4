@@ -42,6 +42,9 @@ public class main {
 				
 				switch (strSplit[i]) {
 				
+				/**
+				 * Case for addition operand
+				 */
 				case "+":
 					System.out.println("Operacion: Sumar, pop, pop y push del resultado");
 					SeconOperand = (float) CurrentStack.pop();
@@ -50,6 +53,9 @@ public class main {
 					CurrentStack.push(result);
 					break;
 				
+				/**
+				 * Case for subtraction operand
+				 */
 				case "-":
 					System.out.println("Operacion: Restar, pop, pop y push del resultado");
 					SeconOperand = (float) CurrentStack.pop();
@@ -57,7 +63,10 @@ public class main {
 					result = CurrentStack.getCalc().getInstance().Substract(FirstOperand, SeconOperand);
 					CurrentStack.push(result);
 					break;
-					
+				
+				/**
+				 * Case for multiplication operand
+				 */
 				case "*":
 					System.out.println("Operacion: Multiplicar, pop, pop y push del resultado");
 					SeconOperand = (float) CurrentStack.pop();
@@ -146,6 +155,7 @@ public class main {
 	
 	/**
 	 * Convert a string from infix format to postfix
+	 * reference: https://www.geeksforgeeks.org/convert-infix-expression-to-postfix-expression/
 	 * @param exp Expression in infix
 	 * @return Converted string to Postfix
 	 */
@@ -206,6 +216,7 @@ public class main {
 	
 	/**
 	 * Method to determine the order of operations according to arithmetic order
+	 * reference: https://www.geeksforgeeks.org/convert-infix-expression-to-postfix-expression/
 	 * @param Symbol that represents 
 	 * @return a value that represents the order of operation
 	 */

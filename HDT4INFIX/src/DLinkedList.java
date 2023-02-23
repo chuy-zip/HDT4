@@ -1,10 +1,19 @@
-
+/**
+ * A stack that internally works with a Double Linked List, both the linked list and stack
+ * methods are included in this class.
+ * @author Ricardo Chuy
+ *
+ * @param <T>
+ */
 public class DLinkedList<T> implements IStack<T>{
 
 	private Calculator Calc;
 	private DoubleNode<T> First;
 	private DoubleNode<T> Last;
 	
+	/**
+	 * Constructor of the linked list
+	 */
 	public DLinkedList() {
 		setFirst(null);
 		setLast(null);
@@ -22,15 +31,27 @@ public class DLinkedList<T> implements IStack<T>{
 			return popData;
 		}
 		
+		/**
+		 * If the first conditions are not met, that means there are more that 1 element in the stack.
+		 */
 		DoubleNode<T> DListNode = First;
 		while(DListNode.getNextNode() != null) {
 			DListNode = DListNode.getNextNode();
 		}
 		
+		/**
+		 * When the last node is found, its data is stored
+		 */
 		T popData = DListNode.getData();
 		
+		/**
+		 * Then its previous node "disconnects from last"
+		 */
 		DListNode.getPreviousNode().setNextNode(null);
 		
+		/**
+		 * The previous node of last, becomes the last node
+		 */
 		Last = DListNode.getPreviousNode();
 		
 		
@@ -48,6 +69,9 @@ public class DLinkedList<T> implements IStack<T>{
 			First.setPreviousNode(null);
 		}
 		
+		/**
+		 * Adding node to last position
+		 */
 		else {
 			Last.setNextNode(newNode);
 			newNode.setPreviousNode(Last);
@@ -68,14 +92,26 @@ public class DLinkedList<T> implements IStack<T>{
 
 	@Override
 	public T Peek() {
-		// TODO Auto-generated method stub
-		return null;
+		DoubleNode<T> DListNode = First;
+		while(DListNode.getNextNode() != null) {
+			DListNode = DListNode.getNextNode();
+		}
+		
+		T popData = DListNode.getData();
+		return popData;
 	}
 
 	@Override
 	public int Size() {
-		// TODO Auto-generated method stub
-		return 0;
+		int counter = 0;
+		
+		DoubleNode<T> currentNode = First;
+		while (currentNode != null) {
+			counter++;
+			currentNode = currentNode.getNextNode();
+		}
+		
+		return counter;
 	}
 	
 	@Override

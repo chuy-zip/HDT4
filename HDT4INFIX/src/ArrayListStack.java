@@ -1,9 +1,18 @@
 import java.util.ArrayList;
 
+/**
+ * A stack that internally works with Arraylist
+ * @author Ricardo Chuy
+ *
+ * @param <T>
+ */
 public class ArrayListStack <T> implements IStack<T>{
 	private Calculator Calc;
 	private ArrayList<T> Stack;
 	
+	/**
+	 * Constructor of the stack
+	 */
 	public ArrayListStack() {
 		Calc.getInstance();
 		Stack = new ArrayList<T>();
