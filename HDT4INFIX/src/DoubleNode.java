@@ -5,10 +5,10 @@ public class DoubleNode<T> {
 	private DoubleNode<T> NextNode;
 	private DoubleNode<T> PreviousNode;
 	
-	public DoubleNode(T data, DoubleNode<T> prevNode) {
+	public DoubleNode(T data) {
 		setData(data);
 		setNextNode(null);
-		setPreviousNode(prevNode);
+		setPreviousNode(null);
 		
 	}
 

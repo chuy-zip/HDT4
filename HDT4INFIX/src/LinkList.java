@@ -81,7 +81,14 @@ public class LinkList<T> implements IStack<T>{
 
 	@Override
 	public int Size() {
-		// TODO Auto-generated method stub
+		int counter = 0;
+		
+		SimpleNode<T> currentNode = First;
+		while (currentNode != null) {
+			counter++;
+			currentNode = currentNode.getNextNode();
+		}
+		
 		return 0;
 	}
 
